@@ -1,0 +1,12 @@
+<div class="interview">
+    <div *ngIf="!isInterviewStarted" class="config">
+        <h1>Interview configuration</h1>
+        <button (click)="startInterview()">Start interview</button>
+    </div>
+    <div *ngIf="isInterviewStarted" class="chat">
+        <h1>Question</h1>
+        <p class="question">{{currentQuestion}}</p>
+        <input class="answer" type="textarea">
+        <button (click)="sendAnswer()">send</button>
+    </div>
+</div>
