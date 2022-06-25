@@ -1,9 +1,11 @@
 from fastapi import FastAPI
-import rest.question.model.questionModel
 
 from db.db import Base, engine
+from rest.question.controller.questionController import router as question_router
 
 app = FastAPI()
+
+app.include_router(question_router)
 
 @app.get("/")
 async def root():

@@ -1,4 +1,8 @@
-from pydantic import BaseModel
+from rest.base.base_schema import BaseSchema
 
-class QuestionBase(BaseModel):
+class QuestionBase(BaseSchema):
+    question: str
+
+class QuestionCreate(BaseSchema):
+    id: int
     question: str
