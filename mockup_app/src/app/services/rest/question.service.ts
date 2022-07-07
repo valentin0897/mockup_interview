@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Question } from 'src/app/classes/Question';
+import { PostQuestion, Question } from 'src/app/classes/Question';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,6 +12,12 @@ export class QuestionService {
 
   getQuestions() {
     this.http.get<Array<Question>>(`${environment.serverUrl}/question/`).subscribe((response)=>{
+      console.log(response)
+    })
+  }
+
+  saveQuestion(body: PostQuestion){
+    this.http.post<Question>(`${environment.serverUrl}/question/`, body).subscribe((response)=>{
       console.log(response)
     })
   }

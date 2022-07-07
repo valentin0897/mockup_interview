@@ -1,1 +1,8 @@
-<button (click)="getQuestions()">Жмяк!</button>
+<div class="create-question">
+    <h1>Create Question</h1>
+    <form [formGroup]="createQuestionForm" (submit)="saveQuestion(this.createQuestionForm.value)">
+        <label for="question">Question</label>
+        <input type="text" name="question" id="question" formControlName="question">
+        <input type="submit" value="Сохранить">
+    </form>
+</div>

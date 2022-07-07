@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from 'src/app/classes/Question'
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { PostQuestion, Question } from 'src/app/classes/Question'
 import { QuestionService } from 'src/app/services/rest/question.service';
 
 @Component({
@@ -10,13 +11,23 @@ import { QuestionService } from 'src/app/services/rest/question.service';
 export class CreateQuestionComponent implements OnInit {
   questions: Question[] = []
 
-  constructor(public questionService: QuestionService) { }
+  createQuestionForm: FormGroup;
+
+  constructor(public questionService: QuestionService, fb: FormBuilder) {
+    this.createQuestionForm = fb.group({
+      question: ''
+    });
+  }
 
   ngOnInit(): void {
   }
 
   getQuestions(){
     this.questionService.getQuestions()
+  }
+
+  saveQuestion(question: PostQuestion){
+    this.questionService.saveQuestion(question)
   }
 
 }

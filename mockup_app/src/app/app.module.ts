@@ -9,6 +9,7 @@ import { InterviewComponent } from './components/interview/interview.component';
 import { InterviewService } from './services/interview/interview.service';
 import { CreateQuestionComponent } from './components/question/create-question/create-question.component';
 import { QuestionService } from './services/rest/question.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { QuestionService } from './services/rest/question.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [InterviewService, QuestionService],
   bootstrap: [AppComponent]

@@ -7,3 +7,7 @@ export class Question{
         this.question = question
     }
 }
+
+export class PostQuestion{
+    question: string = "";
+}
