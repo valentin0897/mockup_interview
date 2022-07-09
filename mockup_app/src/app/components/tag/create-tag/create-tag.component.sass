@@ -1,0 +1,21 @@
+@import "../../../../variables.sass"
+    
+.create-tag
+    @include flexColumnCenter()
+    padding: $paddingTopBottom
+
+    form
+        @include flexColumnCenter(false)
+        padding: $paddingTopBottom
+        width: 50%
+
+        label
+            @include labelFormat()
+
+        input[type="text"]
+            @include inputTextFormat()
+
+
+        input[type="submit"]
+            @include buttonFormat($darkSecondaryCol, $txtLightCol)
+            margin: 20px auto 0 auto

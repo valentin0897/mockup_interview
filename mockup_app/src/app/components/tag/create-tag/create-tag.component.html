@@ -1,0 +1,8 @@
+<div class="create-tag">
+    <h1>Create Tag</h1>
+    <form [formGroup]="createTagForm" (submit)="saveTag(this.createTagForm.value)">
+        <label for="tag">Tag</label>
+        <input type="text" name="tag" id="tag" formControlName="tag">
+        <input type="submit" value="Save">
+    </form>
+</div>
