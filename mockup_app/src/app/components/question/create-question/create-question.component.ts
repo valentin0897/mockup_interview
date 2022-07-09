@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PostQuestion, Question } from 'src/app/classes/Question'
-import { QuestionService } from 'src/app/services/rest/question.service';
+import { QuestionService } from 'src/app/services/rest/question/question.service';
 
 @Component({
   selector: 'br-create-question',
