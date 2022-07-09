@@ -14,6 +14,7 @@ export class InterviewComponent implements OnInit {
   questions: Question[] | null = null
 
   isInterviewStarted: boolean = false
+  isInterviewEnded: boolean = false
 
   constructor(private interviewService: InterviewService) { }
 
@@ -22,6 +23,8 @@ export class InterviewComponent implements OnInit {
 
   startInterview(): void {
     this.isInterviewStarted = true
+    this.isInterviewEnded = false
+
     this.interviewService.loadQuestions().subscribe((response) => {
       this.questions = response
       this.currentQuestion = this.questions[0]
@@ -38,6 +41,24 @@ export class InterviewComponent implements OnInit {
 
   nextQuestion(): void {
     this.currentQuestionIndex += 1
+    if (this.questions != null && this.currentQuestionIndex >= this.questions?.length){
+      this.isInterviewEnded = true
+    }
+  }
+
+  resetInterview(): void {
+    this.currentQuestionIndex = 0
+    
+    if (this.questions != null){
+    this.currentQuestion = this.questions[this.currentQuestionIndex]
+    }
+    this.isInterviewStarted = true
+    this.isInterviewEnded = false
+  }
+
+  backToConfig(): void {
+    this.resetInterview()
+    this.isInterviewStarted = false
   }
 
 }

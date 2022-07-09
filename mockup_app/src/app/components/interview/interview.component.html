@@ -3,10 +3,17 @@
         <h1>Interview configuration</h1>
         <button (click)="startInterview()">Start interview</button>
     </form>
-    <form *ngIf="isInterviewStarted" class="chat">
+    <form *ngIf="isInterviewStarted && !isInterviewEnded" class="chat">
         <h1>Question</h1>
         <h2 class="question">{{currentQuestion?.question}}</h2>
         <textarea class="answer"></textarea>
         <button type="button" (click)="sendAnswer()">Send answer</button>
+    </form>
+    <form *ngIf="isInterviewEnded" class="end-interview">
+        <h2>This is the end of the Interview. Thanks for coming!</h2>
+        <div class="buttons">
+            <button type="button" (click)="resetInterview()">Reset Interview</button>
+            <button type="button" (click)="backToConfig()">Back to setup</button>
+        </div>
     </form>
 </div>
