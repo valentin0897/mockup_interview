@@ -2,20 +2,18 @@
     
 .create-question
     @include flexColumnCenter()
-    padding: 20px 0px
+    padding: $paddingTopBottom
 
     form
         @include flexColumnCenter(false)
-        padding: 20px 0px
-        width: 60%
+        padding: $paddingTopBottom
+        width: 50%
 
         label
             @include labelFormat()
 
         input[type="text"]
-            width: 100%
-            padding: 10px 5px
-            border: 1px solid $darkPrimaryCol
+            @include inputTextFormat()
 
 
         input[type="submit"]
