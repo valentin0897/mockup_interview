@@ -1,5 +1,19 @@
+@import "../../../variables.sass"
+
 .interview
-    display: flex
-    flex-direction: column
-    align-items: center
-    padding: 20px 0
+    @include flexColumnCenter($isCenter: true)
+    padding: $paddingTopBottom
+
+    form
+        @include flexColumnCenter($isCenter: true)
+        width: 50%
+
+        h2
+            padding: $paddingTopBottom
+
+        textarea
+            @include inputTextAreaFormat()
+
+    button
+        @include buttonFormat($darkSecondaryCol, $txtLightCol)
+        margin: 20px 0

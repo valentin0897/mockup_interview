@@ -4,10 +4,17 @@ $darkPrimaryCol: #750833
 $secondaryCol: #21c5f2
 $darkSecondaryCol: #1187a8
 
+$borderCol: rgba(0, 0, 0, 0.95)
+
 // font
 $labelSize: 1.2rem
 $txtLightCol: rgba(255, 255, 255, 0.95)
 
+// paddings
+$paddingTopBottom: 20px 0px
+
+// border-radius
+$borderRadius: 2px
 
 // mixins
 @mixin flexColumnCenter($isCenter: true)
@@ -26,9 +33,22 @@ $txtLightCol: rgba(255, 255, 255, 0.95)
     background-color: $bgCol
     color: $txtCol
     border: none
-    border-radius: 2px
+    border-radius: $borderRadius
     cursor: pointer
     
     &:hover
         transition: ease 0.25s
         background-color: lighten($bgCol, 10%)    
+
+@mixin inputTextFormat()
+    width: 100%
+    padding: 10px 5px
+    border: 1px solid $borderCol
+    border-radius: $borderRadius
+
+@mixin inputTextAreaFormat()
+    width: 100%
+    padding: 10px 5px
+    border: 1px solid $borderCol
+    border-radius: $borderRadius
+    rows: 2
