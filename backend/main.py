@@ -3,8 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from config import frontend_url
 
 from db.db import Base, engine
-from rest.question.controller.questionController import router as question_router
 from rest.tag.controller.tagController import router as tag_router
+from rest.question.controller.questionController import router as question_router
 
 app = FastAPI()
 
@@ -20,8 +20,8 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-app.include_router(question_router)
 app.include_router(tag_router)
+app.include_router(question_router)
 
 @app.get("/")
 async def root():

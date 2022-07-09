@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, relationship
 from rest.tag.schema.tagSchema import TagBase
 
 from db.db import Base
@@ -9,6 +9,7 @@ class Tag(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     tag = Column(String)
+    questions = relationship("Question", back_populates="tag")
 
 def get_all_tags(db: Session) -> list:
     return db.execute(select(Tag)).scalars().all()
