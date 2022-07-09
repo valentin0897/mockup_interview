@@ -13,10 +13,10 @@ class Question(Base):
 
 
 def get_all_questions(db: Session) -> list:
-    return db.execute(select(Question)).all()
+    return db.execute(select(Question)).scalars().all()
 
 def get_question_by_id(db: Session, question_id: int) -> Question | None:
-    return db.execute(select(Question).filter(Question.id == question_id)).first()
+    return db.execute(select(Question).filter(Question.id == question_id)).scalar()
 
 def create_question(db: Session, questionModel: QuestionBase) -> Question:
     db_question = Question(question=questionModel.question)
