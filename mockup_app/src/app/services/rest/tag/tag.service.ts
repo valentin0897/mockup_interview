@@ -10,12 +10,10 @@ export class TagService {
 
   constructor(private http: HttpClient) { }
 
-  getTags() {
-    this.http.get<Array<Tag>>(`${environment.serverUrl}/tag/`).subscribe((response)=>{
-      console.log(response)
-    })
+  loadTags() {
+    return this.http.get<Array<Tag>>(`${environment.serverUrl}/tag/`)
   }
-
+  
   saveTag(body: PostTag){
     this.http.post<Tag>(`${environment.serverUrl}/tag/`, body).subscribe((response)=>{
       console.log(response)

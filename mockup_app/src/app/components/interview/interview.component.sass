@@ -8,6 +8,9 @@
         @include flexColumnCenter($isCenter: true)
         width: 50%
 
+        h1
+            margin-bottom: 40px
+
         h2
             padding: $paddingTopBottom
 
@@ -18,6 +21,34 @@
         @include buttonFormat($darkSecondaryCol, $txtLightCol)
         margin: 20px 0
 
+.config
+    input[type="text"]
+        @include inputTextFormat()
+
+    label
+        @include labelFormat()
+        display: flex
+
+    .all-tags
+        width: 100%
+        display: flex
+
+        p
+            display: flex
+            align-items: center
+
+        ul
+            display: flex
+
+            li
+                @include buttonFormat($primaryCol, $txtLightCol)
+                display: flex
+                justify-content: center
+                align-items: center
+                margin: 10px
+                    
+    
 .end-interview
     button
         margin: 0px 20px
+

@@ -24,7 +24,7 @@ export class CreateTagComponent implements OnInit {
   }
 
   getTags(){
-    this.tagService.getTags()
+    this.tagService.loadTags()
   }
 
   saveTag(tag: PostTag){

@@ -1,6 +1,13 @@
 <div class="interview">
     <form *ngIf="!isInterviewStarted" class="config">
         <h1>Interview configuration</h1>
+        <input type="text" name="tag" id="tag" placeholder="Choose questions tags for interview...">
+        <div class="all-tags">
+            <p>Tags: </p>
+            <ul>
+                <li *ngFor="let tag of tags">{{tag.tag}}</li>
+            </ul>
+        </div>
         <button (click)="startInterview()">Start interview</button>
     </form>
     <form *ngIf="isInterviewStarted && !isInterviewEnded" class="chat">
