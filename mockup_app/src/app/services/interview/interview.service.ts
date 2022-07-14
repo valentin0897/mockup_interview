@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class InterviewService {
   constructor(private http: HttpClient) { }
 
-  loadQuestions() {
-    return this.http.get<Array<Question>>(`${environment.serverUrl}/question/`)
+  loadQuestions(tagId: number) {
+    return this.http.get<Array<Question>>(`${environment.serverUrl}/question/tag/${tagId}`)
   }
 }

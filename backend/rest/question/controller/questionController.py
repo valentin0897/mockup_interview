@@ -13,6 +13,10 @@ router = APIRouter(
 def get_all_questions(db: Session = Depends(get_db)):
     return questionModel.get_all_questions(db)
 
+@router.get("/tag/{tag_id}")
+def get_questions_by_tag(tag_id: int, db: Session = Depends(get_db)):
+    return questionModel.get_questions_by_tag(db, tag_id)
+
 @router.get("/{question_id}")
 def get_question(question_id: int, db: Session = Depends(get_db)):
     return questionModel.get_question_by_id(db, question_id)

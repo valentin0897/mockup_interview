@@ -11,6 +11,9 @@ import { TagService } from 'src/app/services/rest/tag/tag.service';
   styleUrls: ['./interview.component.sass']
 })
 export class InterviewComponent implements OnInit {
+  configForm: FormGroup
+  chosenTag: number | null = null
+
   currentQuestion: Question | null = null
   currentQuestionIndex: number = 0
   questions: Question[] | null = null
@@ -22,7 +25,12 @@ export class InterviewComponent implements OnInit {
 
   constructor(
     private interviewService: InterviewService,
-    private tagService: TagService) { }
+    private tagService: TagService,
+    fb: FormBuilder) {
+      this.configForm = fb.group({
+        tag: ''
+      })
+     }
 
   ngOnInit(): void {
     this.tagService.loadTags().subscribe((response) => {
@@ -32,13 +40,17 @@ export class InterviewComponent implements OnInit {
   }
 
   startInterview(): void {
-    this.isInterviewStarted = true
-    this.isInterviewEnded = false
+    if(this.configForm.controls["tag"].valid && this.chosenTag != null) {
+      this.isInterviewStarted = true
+      this.isInterviewEnded = false
 
-    this.interviewService.loadQuestions().subscribe((response) => {
-      this.questions = response
-      this.currentQuestion = this.questions[0]
-    })
+      this.interviewService.loadQuestions(this.chosenTag).subscribe((response) => {
+        this.questions = response
+        this.currentQuestion = this.questions[0]
+      })
+    } else {
+
+    }
   }
 
   sendAnswer(): void {
@@ -69,6 +81,11 @@ export class InterviewComponent implements OnInit {
   backToConfig(): void {
     this.resetInterview()
     this.isInterviewStarted = false
+  }
+
+  chooseTag(tagId: number, tag: string) {
+    this.chosenTag = tagId
+    this.configForm.controls["tag"].setValue(tag)
   }
 
 }

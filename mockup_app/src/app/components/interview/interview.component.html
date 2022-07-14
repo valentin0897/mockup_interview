@@ -1,11 +1,11 @@
 <div class="interview">
-    <form *ngIf="!isInterviewStarted" class="config">
+    <form *ngIf="!isInterviewStarted" class="config" [formGroup]="configForm">
         <h1>Interview configuration</h1>
-        <input type="text" name="tag" id="tag" placeholder="Choose questions tags for interview...">
+        <input type="text" name="tag" id="tag" readonly="True" required="true" formControlName="tag" placeholder="Choose questions tags for interview...">
         <div class="all-tags">
-            <p>Tags: </p>
+            <p>Topics: </p>
             <ul>
-                <li *ngFor="let tag of tags">{{tag.tag}}</li>
+                <li *ngFor="let tag of tags" (click)="chooseTag(tag.id, tag.tag)">{{tag.tag}}</li>
             </ul>
         </div>
         <button (click)="startInterview()">Start interview</button>
