@@ -10,4 +10,10 @@ export class Question{
 
 export class PostQuestion{
     question: string = "";
+    tagId: number = 0
+
+    constructor(tagId: number, question: string){
+        this.tagId = tagId
+        this.question = question
+    }
 }

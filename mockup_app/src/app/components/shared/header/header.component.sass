@@ -1,6 +1,19 @@
+@import "../../../../variables.sass"
+
 $header-red: #eb6262
 
 header
     background-color: $header-red
     width: 100%
     height: 60px
+    display: flex
+    justify-content: center
+
+    a
+        color: rgb(210, 210, 210)
+        padding: 20px 10px
+        display: flex
+        text-transform: uppercase
+
+        &:hover
+            color: lighten(rgb(210, 210, 210), 20%)

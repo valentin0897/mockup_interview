@@ -2,7 +2,11 @@
     <h1>Create Question</h1>
     <form [formGroup]="createQuestionForm" (submit)="saveQuestion(this.createQuestionForm.value)">
         <label for="question">Question</label>
-        <input type="text" name="question" id="question" formControlName="question">
+        <input type="text" name="question" id="question" formControlName="question" required="true">
+        <label for="tagSelect">Tag</label>
+        <select formControlName="tag_id" id="tagSelect" name="tag_id" required="true">
+            <option *ngFor="let tag of tags" [ngValue]="tag.id">{{tag.tag}}</option>
+        </select>
         <input type="submit" value="Save">
     </form>
 </div>
