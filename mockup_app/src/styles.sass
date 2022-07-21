@@ -1,3 +1,4 @@
+@import "variables.sass"
 // fonts
 @font-face
     font-family: "Inconsolata"
@@ -55,3 +56,12 @@ h2
 
 a
     text-decoration: none
+
+
+.error
+    padding: 20px 10px
+    @include errorMessage
+
+.info
+    padding: 20px 10px
+    @include infoMessage        

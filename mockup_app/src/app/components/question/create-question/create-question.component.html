@@ -8,5 +8,7 @@
             <option *ngFor="let tag of tags" [ngValue]="tag.id">{{tag.tag}}</option>
         </select>
         <input type="submit" value="Save">
+        <p *ngIf="error.isActive" class="error">{{error.message}}</p>
+        <p *ngIf="info.isActive" class="info">{{info.message}}</p>
     </form>
 </div>

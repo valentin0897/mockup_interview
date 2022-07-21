@@ -4,6 +4,10 @@ $darkPrimaryCol: #750833
 $secondaryCol: #21c5f2
 $darkSecondaryCol: #1187a8
 
+
+$errorCol: #a81119
+$infoCol: #16a811
+
 $borderCol: rgba(0, 0, 0, 0.95)
 
 // font
@@ -58,3 +62,10 @@ $borderRadius: 2px
     border: 1px solid $borderCol
     border-radius: $borderRadius
     rows: 2
+
+@mixin errorMessage()
+    color: $errorCol
+
+
+@mixin infoMessage()
+    color: $infoCol

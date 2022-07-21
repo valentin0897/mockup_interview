@@ -2,7 +2,9 @@
     <h1>Create Tag</h1>
     <form [formGroup]="createTagForm" (submit)="saveTag(this.createTagForm.value)">
         <label for="tag">Tag</label>
-        <input type="text" name="tag" id="tag" formControlName="tag">
+        <input type="text" name="tag" id="tag" formControlName="tag" required="true">
         <input type="submit" value="Save">
+        <p *ngIf="error.isActive" class="error">{{error.message}}</p>
+        <p *ngIf="info.isActive" class="info">{{info.message}}</p>
     </form>
 </div>

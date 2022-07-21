@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ErrorMessage } from 'src/app/classes/ErrorMessage';
+import { infoMessage } from 'src/app/classes/InfoMessage';
 import { Tag, PostTag } from 'src/app/classes/Tag';
 import { TagService } from 'src/app/services/rest/tag/tag.service';
 
@@ -9,6 +11,8 @@ import { TagService } from 'src/app/services/rest/tag/tag.service';
   styleUrls: ['./create-tag.component.sass']
 })
 export class CreateTagComponent implements OnInit {
+  error: ErrorMessage = new ErrorMessage()
+  info: infoMessage = new infoMessage()
 
   tags: Tag[] = []
 
@@ -28,6 +32,14 @@ export class CreateTagComponent implements OnInit {
   }
 
   saveTag(tag: PostTag){
-    this.tagService.saveTag(tag)
+    this.error.deactivateError()
+    this.info.deactivateInfo()
+
+    if(this.createTagForm.valid){
+      this.tagService.saveTag(tag)
+      this.info.activateInfo("Tag has been saved")
+    } else {
+      this.error.activateError("Form is invalid")
+    }
   }
 }
